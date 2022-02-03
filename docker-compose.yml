@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  postgres:
+    container_name: microservice-postgres
+    image: postgres:${PG_VERSION}
+    restart: always
+    environment: 
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASS}
+      - POSTGRES_DB=${PG_DB}
+    ports:
+      - "5432:5432"
+  orders-app:
+    container_name: orders-app
+    image: microservice-repo/orders-app
+    build:
+      dockerfile: Dockerfile
+      context: orders-app
+    depends_on:
+      - postgres
+  payments-app:
+    container_name: payments-app
+    image: microservice-repo/payments-app
+    build:
+      dockerfile: Dockerfile
+      context: payments-app
+    depends_on:
+      - postgres
+  main:
+    container_name: main
+    image: microservice-repo/main
+    build:
+      dockerfile: Dockerfile
+      context: main
+    depends_on:
+      - orders-app
+      - payments-app
+    ports:
+      - "3000:3000"
+
+

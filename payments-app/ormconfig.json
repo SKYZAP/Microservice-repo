@@ -1,0 +1,19 @@
+[
+  {
+    "name": "default",
+    "type": "postgres",
+    "host": "microservice-postgres",
+    "port": 5432,
+    "username": "postgres",
+    "password": "postgres",
+    "database": "postgres",
+    "entities": ["dist/**/*.entity{.ts,.js}"],
+    "synchronize": false,
+    "migrations": ["dist/migrations/*{.ts,.js}"],
+    "migrationsTableName": "migrations_typeorm",
+    "cli": {
+      "migrationsDir": "src/migrations"
+    },
+    "migrationsRun": true
+  }
+]
