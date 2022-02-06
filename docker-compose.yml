@@ -10,6 +10,11 @@ services:
       - POSTGRES_DB=${PG_DB}
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
   orders-app:
     container_name: orders-app
     image: microservice-repo/orders-app
