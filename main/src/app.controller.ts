@@ -26,6 +26,11 @@ export class AppController {
     return await this.appService.checkOrderStatus(id);
   }
 
+  @Get('/orders/cancelOrder/:id')
+  async cancelOrder(@Param() id: string) {
+    return await this.appService.cancelOrder(id);
+  }
+
   @Get('/payments/findAll')
   async findAllPayment() {
     return await this.appService.findAllPayment();

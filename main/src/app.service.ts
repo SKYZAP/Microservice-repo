@@ -41,6 +41,14 @@ export class AppService {
     }
   }
 
+  async cancelOrder(id: string) {
+    try {
+      return this.orderClient.send({ cmd: 'cancelOrder' }, { id });
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
   async findAllPayment() {
     try {
       return this.paymentClient.send({ cmd: 'findAllPayment' }, '');
