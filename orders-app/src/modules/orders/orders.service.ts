@@ -98,7 +98,11 @@ export class OrdersService {
 
       await this.ordersRepository.update({ id: orderExist.id }, newOrder);
 
-      return newOrder;
+      const cancelledOrder = await this.ordersRepository.findOne({
+        id: orderExist.id,
+      });
+
+      return cancelledOrder;
     } catch (error) {
       throw new Error(error.message);
     }
