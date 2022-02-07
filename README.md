@@ -8,7 +8,10 @@ Make sure Docker & Docker compose are installed locally on your computer then ru
 docker-compose up
 ```
 ## Testing
-Unit tests were written for the main application and orders application and then can be accessed by running `npm test` in their respective CLIs
+Unit tests were written for the main application and orders application and then can be accessed by running the following command in their respective CLIs
+```
+npm test
+```
 
 ## REST APIs
 All APIs can be accessed from http://localhost:3000
