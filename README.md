@@ -32,6 +32,9 @@ Check Order Status (GET)
 ```
 http://localhost:3000/orders/checkStatus/:id
 ```
-
+Get All Payments (GET)
+```
+http://localhost:3000/payments/findAll
+```
 
 
