@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CreateOrderDto } from './modules/order/create-order.dto';
 
@@ -26,7 +26,7 @@ export class AppController {
     return await this.appService.checkOrderStatus(id);
   }
 
-  @Get('/orders/cancelOrder/:id')
+  @Put('/orders/cancelOrder/:id')
   async cancelOrder(@Param() id: string) {
     return await this.appService.cancelOrder(id);
   }
